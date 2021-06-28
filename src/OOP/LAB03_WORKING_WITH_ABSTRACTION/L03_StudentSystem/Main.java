@@ -1,4 +1,4 @@
-package OOP.LAB03_WORKING_WITH_ABSTRACTION.L03;
+package OOP.LAB03_WORKING_WITH_ABSTRACTION.L03_StudentSystem;
 
 import java.util.Scanner;
 

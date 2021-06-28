@@ -9,5 +9,9 @@ public class InputParser {
                 .mapToInt(Integer::parseInt)
                 .toArray();
     }
+    public static String[] parseArray(String input) {
+        return input.split("\\s+");
+    }
+
 
 }
