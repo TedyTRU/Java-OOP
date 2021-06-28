@@ -1,3 +1,5 @@
+package OOP.LAB03_WORKING_WITH_ABSTRACTION.L03;
+
 import java.util.Scanner;
 
 public class Main {
@@ -14,6 +16,7 @@ public class Main {
             if (commandResult != null) {
                 System.out.println(commandResult);
             }
+            input = scanner.nextLine();
         }
 
     }
