@@ -48,7 +48,7 @@ public class Student {
         } else if (getGrade() >= 3.50) {
             return "Average student.";
         }
-        return "Very nice person.";
+        return "Very nice OOP.EX08_INHERITANCE.person.";
     }
 
 }

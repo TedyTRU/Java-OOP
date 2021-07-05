@@ -1,0 +1,8 @@
+package OOP.EX08_INHERITANCE.E02_Zoo;
+
+public class Reptile extends Animal {
+
+    public Reptile(String name) {
+        super(name);
+    }
+}
