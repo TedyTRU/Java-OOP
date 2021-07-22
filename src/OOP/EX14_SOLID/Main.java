@@ -81,7 +81,7 @@ public class Main {
     private static void logMessage(Logger logger, ReportLevel reportLevel, String dateTame, String message)
             throws InvocationTargetException, IllegalAccessException {
 
-        Class loggerClass = logger.getClass();
+        Class<?> loggerClass = logger.getClass();
         Method method = Arrays.stream(loggerClass.getMethods())
                 .filter(m -> m.getName().equalsIgnoreCase("log" + reportLevel))
                 .findFirst().orElseThrow();
@@ -92,7 +92,7 @@ public class Main {
     private static Appender getAppender(Layout layout, String appenderName)
             throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 
-        Class clazz = Class.forName("OOP.EX14.Models.Appenders." + appenderName);
+        Class<?> clazz = Class.forName("OOP.EX14_SOLID.Models.Appenders." + appenderName);
         return (Appender) clazz.getConstructor(Layout.class).newInstance(layout);
 
     }
@@ -101,7 +101,7 @@ public class Main {
             throws ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, InstantiationException {
 
-        Class clazz = Class.forName("OOP.EX14.Models.Layouts." + layoutName);
+        Class<?> clazz = Class.forName("OOP.EX14_SOLID.Models.Layouts." + layoutName);
         return (Layout) clazz.getConstructor().newInstance();
 
     }

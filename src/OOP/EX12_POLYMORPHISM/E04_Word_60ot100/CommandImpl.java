@@ -14,6 +14,8 @@ public class CommandImpl implements CommandInterface {
             }
         }
     }
+
+
     private Map<String, TextTransform> commandTransforms;
     private StringBuilder text;
 
