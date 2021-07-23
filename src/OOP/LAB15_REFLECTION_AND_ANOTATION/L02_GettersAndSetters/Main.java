@@ -1,6 +1,6 @@
-package OOP.LAB16.L02_GettersAndSetters;
+package OOP.LAB15_REFLECTION_AND_ANOTATION.L02_GettersAndSetters;
 
-import OOP.LAB16.Reflection;
+import OOP.LAB15_REFLECTION_AND_ANOTATION.Reflection;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;

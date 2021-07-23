@@ -1,6 +1,6 @@
-package OOP.LAB16.L03_HighQualityMistakes;
+package OOP.LAB15_REFLECTION_AND_ANOTATION.L03_HighQualityMistakes;
 
-import OOP.LAB16.Reflection;
+import OOP.LAB15_REFLECTION_AND_ANOTATION.Reflection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

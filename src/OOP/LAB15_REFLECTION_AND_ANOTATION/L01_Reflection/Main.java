@@ -1,6 +1,6 @@
-package OOP.LAB16.L01_Reflection;
+package OOP.LAB15_REFLECTION_AND_ANOTATION.L01_Reflection;
 
-import OOP.LAB16.Reflection;
+import OOP.LAB15_REFLECTION_AND_ANOTATION.Reflection;
 
 import java.lang.reflect.InvocationTargetException;
 
