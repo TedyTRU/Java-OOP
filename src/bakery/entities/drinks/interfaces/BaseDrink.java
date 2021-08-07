@@ -16,28 +16,28 @@ public abstract class BaseDrink implements Drink {
     }
 
     private void setName(String name) {
-        if (this.name == null || this.name.trim().isEmpty()) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(INVALID_NAME);
         }
         this.name = name;
     }
 
     private void setPortion(int portion) {
-        if (this.portion <= 0) {
+        if (portion <= 0) {
             throw new IllegalArgumentException(INVALID_PORTION);
         }
         this.portion = portion;
     }
 
     private void setPrice(double price) {
-        if (this.price <= 0) {
+        if (price <= 0) {
             throw new IllegalArgumentException(INVALID_PRICE);
         }
         this.price = price;
     }
 
     private void setBrand(String brand) {
-        if (this.brand == null || this.brand.trim().isEmpty()) {
+        if (brand == null || brand.trim().isEmpty()) {
             throw new IllegalArgumentException(INVALID_BRAND);
         }
         this.brand = brand;
@@ -51,21 +51,21 @@ public abstract class BaseDrink implements Drink {
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public int getPortion() {
-        return 0;
+        return this.portion;
     }
 
     @Override
     public double getPrice() {
-        return 0;
+        return this.price;
     }
 
     @Override
     public String getBrand() {
-        return null;
+        return this.brand;
     }
 }

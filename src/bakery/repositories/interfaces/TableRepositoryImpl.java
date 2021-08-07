@@ -1,30 +1,34 @@
 package bakery.repositories.interfaces;
 
 import bakery.entities.tables.interfaces.BaseTable;
+import bakery.entities.tables.interfaces.Table;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-public class TableRepositoryImpl implements TableRepository<BaseTable> {
-    private Collection<BaseTable> models;
+public class TableRepositoryImpl implements TableRepository<Table> {
+    private Collection<Table> models;
 
     public TableRepositoryImpl() {
         this.models = new ArrayList<>();
     }
 
     @Override
-    public BaseTable getByNumber(int number) {
-        return this.models.stream().filter(b -> b.getTableNumber() == number).findFirst().orElse(null);
+    public Table getByNumber(int number) {
+        return this.models.stream()
+                .filter(b -> b.getTableNumber() == number)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
-    public Collection<BaseTable> getAll() {
+    public Collection<Table> getAll() {
         return Collections.unmodifiableCollection(this.models);
     }
 
     @Override
-    public void add(BaseTable baseTable) {
-        this.models.add(baseTable);
+    public void add(Table table) {
+        this.models.add(table);
     }
 }

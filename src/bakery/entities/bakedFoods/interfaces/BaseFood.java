@@ -14,21 +14,21 @@ public abstract class BaseFood implements BakedFood {
     }
 
     private void setName(String name) {
-        if (this.name == null || this.name.trim().isEmpty()) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(INVALID_NAME);
         }
         this.name = name;
     }
 
     private void setPortion(double portion) {
-        if (this.portion <= 0) {
+        if (portion <= 0) {
             throw new IllegalArgumentException(INVALID_PORTION);
         }
         this.portion = portion;
     }
 
     private void setPrice(double price) {
-        if (this.price <= 0) {
+        if (price <= 0) {
             throw new IllegalArgumentException(INVALID_PRICE);
         }
         this.price = price;
@@ -37,7 +37,7 @@ public abstract class BaseFood implements BakedFood {
     @Override
     public String toString() {
         return String.format("%s: %.2fg - %.2f",
-                this.name, this.portion, this.price);
+                getName(), this.portion, this.price);
     }
 
     @Override
