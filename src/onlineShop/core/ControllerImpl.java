@@ -1,5 +1,6 @@
-package onlineShop.core.interfaces;
+package onlineShop.core;
 
+import onlineShop.core.interfaces.Controller;
 import onlineShop.models.products.components.*;
 import onlineShop.models.products.computers.Computer;
 import onlineShop.models.products.computers.DesktopComputer;

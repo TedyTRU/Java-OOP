@@ -3,7 +3,6 @@ package onlineShop.core;
 
 import onlineShop.common.enums.CommandType;
 import onlineShop.core.interfaces.Controller;
-import onlineShop.core.interfaces.ControllerImpl;
 import onlineShop.core.interfaces.Engine;
 import onlineShop.io.ConsoleReader;
 import onlineShop.io.ConsoleWriter;
