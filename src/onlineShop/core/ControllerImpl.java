@@ -30,15 +30,8 @@ public class ControllerImpl implements Controller {
     public String addComputer(String computerType, int id, String manufacturer,
                               String model, double price) {
 
-        //doesComputerExistInCollection(id, computer != null, EXISTING_COMPUTER_ID);
-        computer = this.computerList.stream()
-                .filter(c -> c.getId() == id)
-                .findFirst()
-                .orElse(null);
-
-        if (computer != null) {
-            throw new IllegalArgumentException(EXISTING_COMPUTER_ID);
-        }
+        getComputerFromTheList(id);
+        doesComputerExistInCollection(computer != null, EXISTING_COMPUTER_ID);
 
         if (computerType.equals("DesktopComputer")) {
             computer = new DesktopComputer(id, manufacturer, model, price);
@@ -59,8 +52,8 @@ public class ControllerImpl implements Controller {
     public String addPeripheral(int computerId, int id, String peripheralType, String manufacturer, String model,
                                 double price, double overallPerformance, String connectionType) {
 
-        doesComputerExistInCollection(computerId, computer == null, NOT_EXISTING_COMPUTER_ID);
         getComputerFromTheList(computerId);
+        doesComputerExistInCollection(computer == null, NOT_EXISTING_COMPUTER_ID);
 
         Peripheral peripheral = this.computer.getPeripherals().stream()
                 .filter(p -> p.getId() == id)
@@ -95,8 +88,8 @@ public class ControllerImpl implements Controller {
     @Override
     public String removePeripheral(String peripheralType, int computerId) {
 
-        doesComputerExistInCollection(computerId, computer == null, NOT_EXISTING_COMPUTER_ID);
         getComputerFromTheList(computerId);
+        doesComputerExistInCollection(computer == null, NOT_EXISTING_COMPUTER_ID);
 
         Peripheral existing = this.computer.removePeripheral(peripheralType);
 
@@ -107,8 +100,9 @@ public class ControllerImpl implements Controller {
     public String addComponent(int computerId, int id, String componentType, String manufacturer,
                                String model, double price, double overallPerformance, int generation) {
 
-        doesComputerExistInCollection(computerId, computer == null, NOT_EXISTING_COMPUTER_ID);
         getComputerFromTheList(computerId);
+        doesComputerExistInCollection(computer == null, NOT_EXISTING_COMPUTER_ID);
+
         Component component = this.computer.getComponents().stream()
                 .filter(c -> c.getId() == id)
                 .findFirst()
@@ -148,8 +142,8 @@ public class ControllerImpl implements Controller {
     @Override
     public String removeComponent(String componentType, int computerId) {
 
-        doesComputerExistInCollection(computerId, computer == null, NOT_EXISTING_COMPUTER_ID);
         getComputerFromTheList(computerId);
+        doesComputerExistInCollection(computer == null, NOT_EXISTING_COMPUTER_ID);
 
         Component existing = this.computer.removeComponent(componentType);
 
@@ -158,17 +152,8 @@ public class ControllerImpl implements Controller {
 
     @Override
     public String buyComputer(int id) {
-        //doesComputerExistInCollection(id, computer == null, NOT_EXISTING_COMPUTER_ID);
-        //getComputerFromTheList(id);
-
-        computer = this.computerList.stream()
-                .filter(c -> c.getId() == id)
-                .findFirst()
-                .orElse(null);
-
-        if (computer == null) {
-            throw new IllegalArgumentException(NOT_EXISTING_COMPUTER_ID);
-        }
+        getComputerFromTheList(id);
+        doesComputerExistInCollection(computer == null, NOT_EXISTING_COMPUTER_ID);
 
         this.computerList.remove(computer);
 
@@ -195,25 +180,15 @@ public class ControllerImpl implements Controller {
 
     @Override
     public String getComputerData(int id) {
-        //doesComputerExistInCollection(id, computer == null, NOT_EXISTING_COMPUTER_ID);
-        //getComputerFromTheList(id);
 
-        computer = this.computerList.stream()
-                .filter(c -> c.getId() == id)
-                .findFirst()
-                .orElse(null);
-
-        if (computer == null) {
-            throw new IllegalArgumentException(NOT_EXISTING_COMPUTER_ID);
-        }
+        getComputerFromTheList(id);
+        doesComputerExistInCollection(computer == null, NOT_EXISTING_COMPUTER_ID);
 
         return this.computer.toString();
     }
 
 
-    private void doesComputerExistInCollection(int id, boolean b, String notExistingComputerId) {
-        getComputerFromTheList(id);
-
+    private void doesComputerExistInCollection( boolean b, String notExistingComputerId) {
         if (b) {
             throw new IllegalArgumentException(notExistingComputerId);
         }
