@@ -109,16 +109,23 @@ public abstract class BaseComputer extends BaseProduct implements Computer {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString()).append(System.lineSeparator());
-        sb.append(String.format("Components (%d):", this.components.size())).append(System.lineSeparator());
+        sb.append(String.format(" Components (%d):", this.components.size())).append(System.lineSeparator());
 
-        this.components.forEach(c -> sb.append(c.toString()).append(System.lineSeparator()));
+        this.components.forEach(c -> sb.append("  ").append(c.toString()).append(System.lineSeparator()));
 
-        sb.append(String.format("Peripherals (%d); Average Overall Performance (%.2f):",
-                this.peripherals.size(), this.peripherals.stream().mapToDouble(Product::getOverallPerformance).average().orElse(0)));
+        sb.append(String.format(" Peripherals (%d); Average Overall Performance (%.2f):",
+                this.peripherals.size(), getAveragePeripheralOverallPerformance()));
         sb.append(System.lineSeparator());
 
-        this.peripherals.forEach(p -> sb.append(p.toString()).append(System.lineSeparator()));
+        this.peripherals.forEach(p -> sb.append("  ").append(p.toString()).append(System.lineSeparator()));
 
         return sb.toString().trim();
+    }
+
+    private double getAveragePeripheralOverallPerformance() {
+        //return this.peripherals.stream().map(Peripheral::getOverallPerformance)
+               // .mapToDouble(Double::doubleValue).average().orElse(0.00);
+
+        return this.peripherals.stream().mapToDouble(Product::getOverallPerformance).average().orElse(0.00);
     }
 }

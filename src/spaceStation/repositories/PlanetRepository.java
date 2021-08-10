@@ -21,7 +21,10 @@ public class PlanetRepository implements Repository<Planet> {
 
     @Override
     public void add(Planet model) {
-        this.planets.add(model);
+        if (this.planets.stream()
+                .noneMatch(p -> p.getName().equals(model.getName()))) {
+            this.planets.add(model);
+        }
     }
 
     @Override

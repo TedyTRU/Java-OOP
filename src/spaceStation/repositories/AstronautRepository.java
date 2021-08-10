@@ -21,7 +21,10 @@ public class AstronautRepository implements Repository<Astronaut> {
 
     @Override
     public void add(Astronaut model) {
-        this.astronauts.add(model);
+        if (this.astronauts.stream()
+        .noneMatch(a -> a.getName().equals(model.getName()))) {
+            this.astronauts.add(model);
+        };
     }
 
     @Override
