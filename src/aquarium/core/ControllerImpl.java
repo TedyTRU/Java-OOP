@@ -13,6 +13,7 @@ import aquarium.repositories.DecorationRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static aquarium.common.ConstantMessages.*;
 import static aquarium.common.ExceptionMessages.*;
@@ -150,11 +151,12 @@ public class ControllerImpl implements Controller {
 
     @Override
     public String report() {
-        StringBuilder sb = new StringBuilder();
+        //StringBuilder sb = new StringBuilder();
 
-        this.aquariums.forEach(a -> sb.append(a.getInfo()).append(System.lineSeparator()));
+        //this.aquariums.forEach(a -> sb.append(a.getInfo()).append(System.lineSeparator()));
+        return this.aquariums.stream().map(Aquarium::getInfo).collect(Collectors.joining(System.lineSeparator()));
 
-        return sb.toString().trim();
+        //return sb.toString().trim();
     }
 
     private void giveAquarium(String aquariumName) {
