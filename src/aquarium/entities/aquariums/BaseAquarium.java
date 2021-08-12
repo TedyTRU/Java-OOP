@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static aquarium.common.ConstantMessages.*;
 import static aquarium.common.ExceptionMessages.*;
@@ -79,9 +80,9 @@ public abstract class BaseAquarium implements Aquarium {
         sb.append("Fish: ");
 
         if (!this.fish.isEmpty()) {
+            sb.append(this.fish.stream().map(Fish::getName).collect(Collectors.joining(" ")));
             //this.fish.forEach(f -> sb.append(f.getName()).append(" "));
             //this.fish.forEach(f -> sb.append(String.join(" ", f.getName())));
-            this.fish.forEach(f -> sb.append(String.join(", ", f.getName())));
 
         } else {
             sb.append("none");
