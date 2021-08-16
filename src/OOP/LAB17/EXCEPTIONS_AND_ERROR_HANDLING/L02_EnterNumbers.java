@@ -1,4 +1,4 @@
-package OOP.LAB17;
+package OOP.LAB17.EXCEPTIONS_AND_ERROR_HANDLING;
 
 import java.util.Scanner;
 import java.util.stream.IntStream;

@@ -1,4 +1,4 @@
-package OOP.LAB17.L05_CustomException;
+package OOP.LAB17.EXCEPTIONS_AND_ERROR_HANDLING.L05_CustomException;
 
 public class Student {
     private String name;

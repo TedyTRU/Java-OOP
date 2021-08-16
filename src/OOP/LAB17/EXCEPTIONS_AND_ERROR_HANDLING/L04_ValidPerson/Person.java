@@ -1,4 +1,4 @@
-package OOP.LAB17.L04_ValidPerson;
+package OOP.LAB17.EXCEPTIONS_AND_ERROR_HANDLING.L04_ValidPerson;
 
 public class Person {
     private String firstName;
