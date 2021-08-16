@@ -12,7 +12,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class Engine implements Runnable {
-    private static final String COMMANDS_PATH = "barracksWars.core.commands.";
+    private static final String COMMANDS_PATH = "Delete.barracksWars.core.commands.";
 
     private Repository repository;
     private UnitFactory unitFactory;

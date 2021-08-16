@@ -15,5 +15,5 @@ public class ExceptionMessages {
 
     public static final String FOOD_OR_DRINK_EXIST = "%s %s is already in the menu";
 
-    public static final String TABLE_EXIST = "Table %d is already added to the restaurant";
+    public static final String TABLE_EXIST = "Table %d is already added to the EXAMS.E07.restaurant";
 }

@@ -49,7 +49,7 @@ public class EngineImpl implements Engine {
                 result = controller.addPlayer(data[0]);
                 break;
             case AddGun:
-                result = controller.addGun(data[0], data[1]);
+               result = controller.addGun(data[0], data[1]);
                 break;
             case AddGunToPlayer:
                 result = controller.addGunToPlayer(data[0]);

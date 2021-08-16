@@ -2,58 +2,50 @@ package EXAMS.E04.viceCity.models.neighbourhood;
 
 import EXAMS.E04.viceCity.models.guns.Gun;
 import EXAMS.E04.viceCity.models.players.Player;
-import EXAMS.E04.viceCity.repositories.interfaces.Repository;
 
-import java.util.ArrayDeque;
 import java.util.Collection;
-import java.util.Deque;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GangNeighbourhood implements Neighbourhood {
+
+    public GangNeighbourhood() {
+    }
+
     @Override
     public void action(Player mainPlayer, Collection<Player> civilPlayers) {
+        boolean allDead = false;
 
-        Repository<Gun> gunRepository = mainPlayer.getGunRepository();
-
-        Deque<Player> players = new ArrayDeque<>(civilPlayers);
-        Deque<Gun> guns = new ArrayDeque<>(gunRepository.getModels());
-
-        Player player = players.poll();
-        Gun gun = guns.poll();
-
-        while (player != null && gun != null) {
-            while (gun.canFire() && player.isAlive()) {
-                int fire = gun.fire();
-                player.takeLifePoints(fire);
-            }
-
-            if (gun.canFire()) {
-                player = players.poll();
-
-            } else if (player.isAlive()) {
-                gun = guns.poll();
-            }
-        }
-
-        for (Player civilPlayer : civilPlayers) {
-            if (civilPlayer.isAlive()) {
-                Deque<Gun> playerGuns = new ArrayDeque<>(civilPlayer.getGunRepository().getModels());
-                Gun playerGun = playerGuns.poll();
-
-                while (playerGun != null) {
-                    while (playerGun.canFire() && mainPlayer.isAlive()) {
-                        int fire = playerGun.fire();
-                        mainPlayer.takeLifePoints(fire);
+        for (Gun gun : mainPlayer.getGunRepository().getModels()) {
+            while (gun.canFire()) {
+                for (Player civilPlayer : civilPlayers) {
+                    while (civilPlayer.isAlive() && gun.canFire()) {
+                        civilPlayer.takeLifePoints(gun.fire());
+                        if (civilPlayers.stream().noneMatch(Player::isAlive)) {
+                            allDead = true;
+                        }
                     }
-
-                    if (!mainPlayer.isAlive()) {
-                        return;
-                    }
-
-                    playerGun = playerGuns.poll();
+                }
+                if (allDead) {
+                    break;
                 }
             }
         }
 
+        if (!allDead) {
+            List<Player> alivePlayers = civilPlayers.stream().filter(Player::isAlive).collect(Collectors.toList());
+            for (Player player : alivePlayers) {
+                for (Gun gun : player.getGunRepository().getModels()) {
+                    while (gun.canFire() && mainPlayer.isAlive()) {
+                        mainPlayer.takeLifePoints(gun.fire());
+
+                    }
+                }
+                if (!mainPlayer.isAlive()) {
+                    break;
+                }
+            }
+        }
 
     }
 }

@@ -1,6 +1,6 @@
 package EXAMS.E04.viceCity.models.guns;
 
-import static EXAMS.E04.viceCity.common.ExceptionMessages.*;
+import EXAMS.E04.viceCity.common.ExceptionMessages;
 
 public abstract class BaseGun implements Gun {
     private String name;
@@ -17,21 +17,21 @@ public abstract class BaseGun implements Gun {
 
     private void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new NullPointerException(NAME_NULL);
+            throw new NullPointerException(ExceptionMessages.NAME_NULL);
         }
         this.name = name;
     }
 
     protected void setBulletsPerBarrel(int bulletsPerBarrel) {
         if (bulletsPerBarrel < 0) {
-            throw new IllegalArgumentException(BULLETS_LESS_THAN_ZERO);
+            throw new IllegalArgumentException(ExceptionMessages.BULLETS_LESS_THAN_ZERO);
         }
         this.bulletsPerBarrel = bulletsPerBarrel;
     }
 
     protected void setTotalBullets(int totalBullets) {
         if (totalBullets < 0) {
-            throw new IllegalArgumentException(TOTAL_BULLETS_LESS_THAN_ZERO);
+            throw new IllegalArgumentException(ExceptionMessages.TOTAL_BULLETS_LESS_THAN_ZERO);
         }
         this.totalBullets = totalBullets;
     }
@@ -52,7 +52,7 @@ public abstract class BaseGun implements Gun {
 
     @Override
     public boolean canFire() {
-        return this.totalBullets > 0 || this.bulletsPerBarrel > 0;
+        return this.bulletsPerBarrel > 0 || this.totalBullets > 0;
     }
 
     @Override
@@ -64,6 +64,4 @@ public abstract class BaseGun implements Gun {
 //    public int fire() {
 //        return 0;
 //    }
-
-
 }

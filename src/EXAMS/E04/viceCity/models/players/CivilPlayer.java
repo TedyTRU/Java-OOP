@@ -1,9 +1,9 @@
 package EXAMS.E04.viceCity.models.players;
 
 public class CivilPlayer extends BasePlayer {
-    private static final int LIFE_POINTS = 50;
+    private static final int INITIAL_LIFE_POINTS = 50;
 
     public CivilPlayer(String name) {
-        super(name, LIFE_POINTS);
+        super(name, INITIAL_LIFE_POINTS);
     }
 }

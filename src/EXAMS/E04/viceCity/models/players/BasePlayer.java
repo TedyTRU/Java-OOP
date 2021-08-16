@@ -3,9 +3,7 @@ package EXAMS.E04.viceCity.models.players;
 import EXAMS.E04.viceCity.models.guns.Gun;
 import EXAMS.E04.viceCity.repositories.interfaces.GunRepository;
 import EXAMS.E04.viceCity.repositories.interfaces.Repository;
-
 import static EXAMS.E04.viceCity.common.ExceptionMessages.*;
-
 
 public abstract class BasePlayer implements Player {
     private String name;
@@ -20,7 +18,7 @@ public abstract class BasePlayer implements Player {
 
     private void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new NullPointerException(NAME_NULL);
+            throw new NullPointerException(PLAYER_NULL_USERNAME);
         }
         this.name = name;
     }
@@ -54,6 +52,6 @@ public abstract class BasePlayer implements Player {
 
     @Override
     public void takeLifePoints(int points) {
-        this.lifePoints = Math.max(0, (this.lifePoints - points));
+        this.setLifePoints(this.getLifePoints() - points);
     }
 }

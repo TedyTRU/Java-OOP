@@ -1,10 +1,10 @@
 package EXAMS.E04.viceCity.models.players;
 
 public class MainPlayer extends BasePlayer {
-    private final static String NAME = "Tommy Vercetti";
-    private final static int LIFE_POINTS = 100;
+    private static final int INITIAL_LIFE_POINTS = 100;
+    private static final String INITIAL_NAME = "Tommy Vercetti";
 
     public MainPlayer() {
-        super(NAME, LIFE_POINTS);
+        super(INITIAL_NAME, INITIAL_LIFE_POINTS);
     }
 }
